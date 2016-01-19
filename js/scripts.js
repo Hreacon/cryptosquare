@@ -13,6 +13,10 @@ var squareStraightString = function(straightString) {
   return straightString.match(new RegExp('.{1,' + columns + '}', 'g')).toString();
 }
 
+var cryptSquare = function(square) {
+  
+}
+
 $(document).ready(function() {
   // r$("body").text(squareStraightString(convertString("this, is, fifteen behavior test!!!")));
 });
