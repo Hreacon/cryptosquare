@@ -18,6 +18,10 @@ var squareStraightString = function(straightString) {
   return output;
 }
 
+var convertStringToCrypt = function(regularSentance) {
+  return cryptSquare(squareStraightString(convertString(regularSentance))).replace(/,/g, ' ');
+}
+
 var cryptSquare = function(square) {
   // get 5 letter 'words' going top to bottom down the square
   var five = [];
@@ -40,7 +44,7 @@ var cryptSquare = function(square) {
 $(document).ready(function() {
   $("form").submit(function(event){
     var regularSentance = $("#cryptoInput").val();
-    $(".output").text(cryptSquare(squareStraightString(convertString(regularSentance))));
+    $(".output").text(convertStringToCrypt(regularSentance));
     event.preventDefault();
   });
   //
