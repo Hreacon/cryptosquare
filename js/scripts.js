@@ -27,16 +27,17 @@ var cryptSquare = function(square) {
   console.log("Rows: " + square.length);
 
   var columns = square[0].length ; // COLUMNS
+  var rows = square.length; // rows is how many elements in the array
   console.log("cryptSquare, " + columns);
 
   for(var outerIndex = 0; outerIndex<columns; outerIndex++) { // iterate through the desired words
     console.log("Iteration " + outerIndex);
-    for(var index = 0;index<square.length;index++) { // iterate through the rows
+    for(var index = 0;index<rows;index++) { // iterate through the rows
 
       console.log("Inside Iteration " + index + " " + square[index%square.length]);
 
-      var squa = square[index%square.length][outerIndex]; // get the next character
-      if(squa !== undefined) five = five + squa; // check against characters that dont exist ie the last row
+      var character = square[index%square.length][outerIndex]; // get the next character
+      if(character !== undefined) five = five + character; // check against characters that dont exist ie the last row
     }
     five = five + '';
   }
