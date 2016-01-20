@@ -11,8 +11,6 @@ var squareStraightString = function(straightString) {
   console.log("Columns: " + columns);
   var rows = Math.round(straightString.length/columns);
   console.log("Rows: " + rows);
-  var square = [];
-  var sIndex = 0;
   var output = splitStringByLength(straightString, columns);
   console.log("squareStraightString output: " + output);
   return output;
@@ -24,21 +22,25 @@ var convertStringToCrypt = function(regularSentance) {
 
 var cryptSquare = function(square) {
   // get 5 letter 'words' going top to bottom down the square
-  var five = [];
-  square = square.split(',');
-  console.log("Columns: " + square.length);
-  var upperBarrier = square.join('').length/5 -1;
-  console.log("cryptSquare, " + upperBarrier);
-  for(var up = 0;up<upperBarrier;up++) {
-    console.log("Iteration " + up);
-    for(var index = 0;index<square.length;index++) {
+  var five = ''; // string to store output in
+  square = square.split(','); // split input into array of rows
+  console.log("Rows: " + square.length);
+
+  var columns = square[0].length ; // COLUMNS
+  console.log("cryptSquare, " + columns);
+
+  for(var outerIndex = 0; outerIndex<columns; outerIndex++) { // iterate through the desired words
+    console.log("Iteration " + outerIndex);
+    for(var index = 0;index<square.length;index++) { // iterate through the rows
+
       console.log("Inside Iteration " + index + " " + square[index%square.length]);
-      var squa = square[index%square.length][up];
-      if(squa !== undefined) five = five + squa;
+
+      var squa = square[index%square.length][outerIndex]; // get the next character
+      if(squa !== undefined) five = five + squa; // check against characters that dont exist ie the last row
     }
     five = five + '';
   }
-  return splitStringByLength(five, 5);
+  return splitStringByLength(five, 5); // split by length into 5 characters
 }
 
 $(document).ready(function() {
